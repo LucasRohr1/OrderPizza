@@ -1,39 +1,287 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 20px;
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
 }
 
 h1 {
+  color: #ffffff;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Order Section */
+.order {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.order h2 {
   color: #d32323;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  border-bottom: 3px solid #d32323;
+  padding-bottom: 10px;
+}
+
+/* Form Styles */
+.order form > div:first-child {
+  background-color: #f9f9f9;
+  padding: 25px;
+  border-radius: 8px;
   margin-bottom: 20px;
 }
 
-.pizza {
+.order label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.order select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
   background-color: white;
-  padding: 20px;
-  margin: 15px 0;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  margin-bottom: 20px;
+}
+
+.order select:hover {
+  border-color: #d32323;
+}
+
+.order select:focus {
+  outline: none;
+  border-color: #d32323;
+  box-shadow: 0 0 0 3px rgba(211, 35, 35, 0.1);
+}
+
+/* Radio Buttons */
+.order input[type="radio"] {
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.order span {
+  display: inline-block;
+  margin-right: 20px;
+  padding: 10px 15px;
+  background-color: white;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.order span:hover {
+  background-color: #fff5f5;
+  border-color: #d32323;
+}
+
+.order input[type="radio"]:checked + label {
+  color: #d32323;
+  font-weight: 600;
+}
+
+/* Button */
+.order button[type="submit"] {
+  background: linear-gradient(135deg, #d32323 0%, #a11818 100%);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 8px rgba(211, 35, 35, 0.3);
+  margin-top: 15px;
+  width: 100%;
+}
+
+.order button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(211, 35, 35, 0.4);
+}
+
+.order button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* Pizza Display */
+.order-pizza {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 25px;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.order-pizza > p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #d32323;
+  margin-left: auto;
+  padding-left: 20px;
+}
+
+.pizza {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .pizza img {
-  width: 50%;
-  max-width: 200px;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 15px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.pizza h1 {
-  font-size: 24px;
+.pizza div {
+  flex: 1;
+}
+
+.pizza h2 {
+  font-size: 1.5rem;
   margin: 0 0 10px 0;
-  color: #333;
+  color: #1a1a1a;
+  font-weight: 700;
 }
 
 .pizza p {
   color: #666;
-  line-height: 1.5;
+  line-height: 1.6;
   margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Cart Styles */
+.cart {
+  background-color: #f9f9f9;
+  padding: 25px;
+  border-radius: 8px;
+  margin-top: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.cart h2 {
+  color: #d32323;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #d32323;
+  padding-bottom: 10px;
+}
+
+.cart ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.cart li {
+  display: grid;
+  grid-template-columns: 80px 1fr 100px;
+  gap: 15px;
+  align-items: center;
+  padding: 15px;
+  background-color: white;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.cart li:hover {
+  transform: translateX(5px);
+}
+
+.cart .size {
+  font-weight: bold;
+  color: white;
+  background-color: #667eea;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.cart .type {
+  color: #333;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.cart .price {
+  color: #d32323;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: right;
+}
+
+.cart > p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-align: right;
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #fff5f5;
+  border-radius: 6px;
+  border: 2px solid #d32323;
+}
+
+.cart button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+  width: 100%;
+}
+
+.cart button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+}
+
+.cart button:active {
+  transform: translateY(0);
+}
+
+/* Loading States */
+h3 {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 20px;
 }
