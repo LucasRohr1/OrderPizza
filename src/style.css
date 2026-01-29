@@ -1,13 +1,56 @@
+/* Importar fuente Pacifico */
+@font-face {
+  font-family: 'Pacifico';
+  src: url('/public/Pacifico-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  padding: 20px;
+  padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0f121e 0%, #764ba2 100%);
   min-height: 100vh;
+}
+
+/* App Container - estructura principal */
+.app-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  grid-template-rows: auto 1fr;
+  gap: 20px;
+  min-height: 100vh;
+}
+
+/* Header ocupa toda la fila superior */
+nav {
+  grid-column: 1 / -1;
+}
+
+/* Contenido principal (rutas) */
+.main-content {
+  grid-column: 1;
+  grid-row: 2;
+  min-height: 400px;
+}
+
+/* Sidebar (Pizza of the Day) */
+.sidebar-content {
+  grid-column: 2;
+  grid-row: 2;
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
 }
 
 /* Header Navigation */
@@ -15,26 +58,46 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto 30px auto;
-  padding: 20px 30px;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  padding: 10px 30px;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 2px solid white;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+  transform: scale(1.05);
+}
+
+.logo-icon {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
 }
 
 nav .logo {
   margin: 0;
-  color: #d32323;
-  font-size: 2rem;
+  color: #e9e0e0;
+  font-size: 3rem;
+  font-family: 'Pacifico', cursive;
+  font-weight: normal;
   text-shadow: none;
+  line-height: 1;
 }
 
 .nav-cart {
   position: relative;
   width: 50px;
   height: 50px;
-  background-color: lightblue;
+  background-color: rgb(234, 245, 249);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -93,7 +156,9 @@ h1 {
 .order h2 {
   color: #d32323;
   margin-bottom: 25px;
-  font-size: 1.8rem;
+  font-size: 2rem;
+  font-family: 'Pacifico', cursive;
+  font-weight: normal;
   border-bottom: 3px solid #d32323;
   padding-bottom: 10px;
 }
@@ -257,7 +322,9 @@ h1 {
 .cart h2 {
   color: #d32323;
   margin-bottom: 15px;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  font-family: 'Pacifico', cursive;
+  font-weight: normal;
   border-bottom: 2px solid #d32323;
   padding-bottom: 8px;
 }
@@ -392,31 +459,32 @@ h3 {
 /* Pizza of the Day Section */
 .pizza-of-the-day {
   background-color: white;
-  padding: 15px;
+  padding: 20px;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: column;
   height: fit-content;
-  max-height: 600px;
 }
 
 .pizza-of-the-day h2 {
   color: #d32323;
-  margin-bottom: 12px;
-  font-size: 1.3rem;
-  border-bottom: 2px solid #d32323;
-  padding-bottom: 8px;
+  margin: 0 0 15px 0;
+  font-size: 1.6rem;
+  font-family: 'Pacifico', cursive;
+  font-weight: normal;
+  border-bottom: 3px solid #d32323;
+  padding-bottom: 10px;
 }
 
 .pizza-of-the-day-image {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   transition: transform 0.3s;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
 .pizza-of-the-day-image:hover {
@@ -456,8 +524,181 @@ h3 {
   margin: 0 auto;
 }
 
+/* Index/Home Page Styles */
+.index {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.index-hero {
+  background: white;
+  border-radius: 16px;
+  padding: 50px 40px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.index-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #d32323 0%, #667eea 50%, #764ba2 100%);
+}
+
+.index-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.index-tagline {
+  color: #d32323;
+  font-size: 2.5rem;
+  margin: 0 0 20px 0;
+  font-family: 'Pacifico', cursive;
+  font-weight: normal;
+  line-height: 1.3;
+}
+
+.index-description {
+  color: #555;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.index-actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.index-action-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px 30px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: 3px solid transparent;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.index-action-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  transition: height 0.3s ease;
+}
+
+.order-card::before {
+  background: linear-gradient(135deg, #d32323 0%, #a11818 100%);
+}
+
+.history-card::before {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.index-action-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+.index-action-card:hover::before {
+  height: 100%;
+  opacity: 0.05;
+}
+
+.order-card:hover {
+  border-color: #d32323;
+}
+
+.history-card:hover {
+  border-color: #667eea;
+}
+
+.action-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.index-action-card:hover .action-icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.index-action-card h3 {
+  color: #333;
+  font-size: 1.8rem;
+  margin: 0 0 15px 0;
+  font-weight: 700;
+  text-align: center;
+  padding: 0;
+  font-style: normal;
+}
+
+.order-card:hover h3 {
+  color: #d32323;
+}
+
+.history-card:hover h3 {
+  color: #667eea;
+}
+
+.index-action-card p {
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .app-container {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+  
+  nav {
+    grid-column: 1;
+  }
+  
+  .main-content {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  .sidebar-content {
+    grid-column: 1;
+    grid-row: 3;
+    position: relative;
+    top: 0;
+    max-height: none;
+  }
+}
+
 @media (max-width: 768px) {
+  .app-container {
+    padding: 10px;
+    gap: 15px;
+  }
+  
   /* Apilar layout verticalmente en móviles */
   .layout-container {
     grid-template-columns: 1fr;
@@ -468,10 +709,39 @@ h3 {
   }
   
   nav {
-    padding: 15px 20px;
+    padding: 12px 15px;
   }
   
   nav .logo {
-    font-size: 1.5rem;
+    font-size: 2rem;
+  }
+  
+  .logo-link {
+    gap: 10px;
+  }
+  
+  .index-hero {
+    padding: 30px 20px;
+  }
+  
+  .index-tagline {
+    font-size: 1.6rem;
+  }
+  
+  .index-description {
+    font-size: 1rem;
+  }
+  
+  .index-actions {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .index-action-card {
+    padding: 30px 20px;
+  }
+  
+  .action-icon {
+    font-size: 3rem;
   }
 }
