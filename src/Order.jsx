@@ -1,32 +1,79 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect, useContext } from "react";
 import Pizza from "./Pizza";
 import Cart from "./Cart";
+import { CartContext } from "./contexts";
 
 const intl = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
 });
 
+/**
+ * Order Component
+ * 
+ * Responsabilidades:
+ * - Manejar la selección de pizza
+ * - Coordinar el proceso de pedido
+ * - Delega el manejo del carrito al contexto (SRP)
+ */
 export default function Order() {
   const [pizzaTypes, setPizzaTypes] = useState([]);
   const [pizzaType, setPizzaType] = useState("");
   const [pizzaSize, setPizzaSize] = useState("M");
-  const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [cart, setCart] = useContext(CartContext);
 
-  async function checkout() {
-    setLoading(true);
-    
-    await fetch("/api/order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ cart }),
-    });
-    
+  /**
+   * Agrega un item al carrito
+   * Responsabilidad única: actualizar el estado del carrito
+   */
+  const addToCart = (item) => {
+    setCart([...cart, item]);
+  };
+
+  /**
+   * Limpia el carrito
+   * Responsabilidad única: vaciar el estado del carrito
+   */
+  const clearCart = () => {
     setCart([]);
-    setLoading(false);
+  };
+
+  /**
+   * Procesa el checkout del pedido
+   * Responsabilidad única: comunicarse con la API
+   */
+  async function checkout() {
+    // 1. Activar estado de carga para mostrar "Loading..." en la UI
+    setLoading(true);
+  
+    try {
+      // 2. Enviar el pedido al servidor mediante HTTP POST
+      await fetch("/api/order", {
+        // Método HTTP: POST para CREAR/ENVIAR datos
+        method: "POST",
+        
+        // Headers: metadatos que describen la petición
+        headers: {
+          // Le dice al servidor: "Los datos que envío están en formato JSON"
+          "Content-Type": "application/json",
+        },
+        
+        // Body: el contenido/datos que enviamos (el carrito)
+        // JSON.stringify() convierte el objeto JavaScript a string JSON
+        body: JSON.stringify({ cart }),
+      });
+  
+      // 3. Una vez enviado exitosamente, vaciar el carrito
+      clearCart();
+    } catch (error) {
+      // 4. Si algo sale mal, mostrar el error en consola
+      console.error("Error during checkout:", error);
+      
+    } finally {
+      // 5. Siempre desactivar estado de carga (éxito o error)
+      setLoading(false);
+    }
   }
 
   let price, selectedPizza;
@@ -57,13 +104,26 @@ export default function Order() {
     fetchPizzaTypes();
   }, []);
 
+  /**
+   * Maneja el submit del formulario
+   * Delega la lógica de agregar al carrito al contexto
+   */
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    if (!selectedPizza) return;
+
+    addToCart({
+      pizza: selectedPizza,
+      size: pizzaSize,
+      price: price,
+    });
+  };
+
   return (
     <div className="order">
       <h2>Create Order</h2>
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        setCart([...cart, {pizza: selectedPizza, size: pizzaSize, price: price}]); //agrega la pizza seleccionada al carrito
-      }}>
+      <form onSubmit={handleSubmit}>
         <div>
           <div>
             <label htmlFor="pizza-type">Pizza Type:</label>
@@ -135,9 +195,11 @@ export default function Order() {
           )
         }
       </form>
-      {
-        loading ? <h2>Loading cart...</h2> : cart.length > 0 ? <Cart cart={cart} checkout={checkout}/> : null
-      }
+      {loading ? (
+        <h2>Loading cart...</h2>
+      ) : cart.length > 0 ? (
+        <Cart cart={cart} checkout={checkout} />
+      ) : null}
     </div>
   );
 }

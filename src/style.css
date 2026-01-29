@@ -10,6 +10,70 @@ body {
   min-height: 100vh;
 }
 
+/* Header Navigation */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto 30px auto;
+  padding: 20px 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+nav .logo {
+  margin: 0;
+  color: #d32323;
+  font-size: 2rem;
+  text-shadow: none;
+}
+
+.nav-cart {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background-color: lightblue;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 8px rgba(211, 35, 35, 0.3);
+}
+
+.nav-cart:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(211, 35, 35, 0.5);
+}
+
+.nav-cart::before {
+  content: '🛒';
+  font-size: 1.5rem;
+  position: absolute;
+}
+
+.nav-cart-number {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #667eea;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
 h1 {
   color: #ffffff;
   margin-bottom: 30px;
@@ -284,4 +348,84 @@ h3 {
   color: #666;
   font-style: italic;
   padding: 20px;
+}
+
+/* Pizza of the Day Section */
+.pizza-of-the-day {
+  max-width: 1200px;
+  margin: 30px auto 0 auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.pizza-of-the-day h2 {
+  color: #d32323;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  border-bottom: 3px solid #d32323;
+  padding-bottom: 10px;
+}
+
+.pizza-of-the-day > div {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 30px;
+  align-items: center;
+}
+
+.pizza-of-the-day-info h3 {
+  color: #667eea;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  text-align: left;
+  font-style: normal;
+  padding: 0;
+}
+
+.pizza-of-the-day-info p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.pizza-of-the-day-price {
+  font-size: 1.2rem !important;
+  font-weight: bold !important;
+  color: #d32323 !important;
+  margin-top: 15px !important;
+}
+
+.pizza-of-the-day-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s;
+}
+
+.pizza-of-the-day-image:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .pizza-of-the-day > div {
+    grid-template-columns: 1fr;
+  }
+  
+  .pizza-of-the-day-image {
+    height: 300px;
+  }
+  
+  nav {
+    padding: 15px 20px;
+  }
+  
+  nav .logo {
+    font-size: 1.5rem;
+  }
 }
