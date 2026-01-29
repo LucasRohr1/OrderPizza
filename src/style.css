@@ -84,8 +84,6 @@ h1 {
 
 /* Order Section */
 .order {
-  max-width: 1200px;
-  margin: 0 auto;
   background-color: white;
   padding: 30px;
   border-radius: 12px;
@@ -246,85 +244,104 @@ h1 {
 
 /* Cart Styles */
 .cart {
-  background-color: #f9f9f9;
-  padding: 25px;
-  border-radius: 8px;
-  margin-top: 30px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  max-height: 600px;
 }
 
 .cart h2 {
   color: #d32323;
-  margin-bottom: 20px;
-  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
   border-bottom: 2px solid #d32323;
-  padding-bottom: 10px;
+  padding-bottom: 8px;
 }
 
 .cart ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 20px 0;
+  margin: 0 0 15px 0;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .cart li {
-  display: grid;
-  grid-template-columns: 80px 1fr 100px;
-  gap: 15px;
+  padding: 12px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border-left: 3px solid #667eea;
+}
+
+.cart-item-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 15px;
-  background-color: white;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  transition: transform 0.2s;
+  margin-bottom: 6px;
 }
 
-.cart li:hover {
-  transform: translateX(5px);
-}
-
-.cart .size {
-  font-weight: bold;
-  color: white;
-  background-color: #667eea;
-  padding: 8px 12px;
-  border-radius: 6px;
-  text-align: center;
-  font-size: 1rem;
-}
-
-.cart .type {
+.cart-item-name {
   color: #333;
-  font-weight: 500;
-  font-size: 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  flex: 1;
+  line-height: 1.3;
 }
 
-.cart .price {
+.size-badge {
+  background-color: #667eea;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.cart-item-description {
+  color: #666;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  margin: 4px 0 6px 0;
+}
+
+.cart-item-price {
   color: #d32323;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-align: right;
 }
 
-.cart > p {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-  text-align: right;
-  margin: 20px 0;
-  padding: 15px;
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
   background-color: #fff5f5;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 2px solid #d32323;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.cart-total-amount {
+  color: #d32323;
+  font-size: 1.3rem;
 }
 
 .cart button {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  padding: 14px 32px;
-  font-size: 1.1rem;
+  padding: 12px;
+  font-size: 1rem;
   font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
@@ -342,6 +359,28 @@ h1 {
   transform: translateY(0);
 }
 
+/* Cart Empty State */
+.cart-empty {
+  text-align: center;
+  padding: 30px 20px;
+  color: #999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-empty p:first-child {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.cart-empty p:last-child {
+  font-size: 0.95rem;
+  color: #999;
+  line-height: 1.4;
+}
+
 /* Loading States */
 h3 {
   text-align: center;
@@ -352,33 +391,42 @@ h3 {
 
 /* Pizza of the Day Section */
 .pizza-of-the-day {
-  max-width: 1200px;
-  margin: 30px auto 0 auto;
   background-color: white;
-  padding: 30px;
+  padding: 15px;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  max-height: 600px;
 }
 
 .pizza-of-the-day h2 {
   color: #d32323;
-  margin-bottom: 25px;
-  font-size: 1.8rem;
-  border-bottom: 3px solid #d32323;
-  padding-bottom: 10px;
+  margin-bottom: 12px;
+  font-size: 1.3rem;
+  border-bottom: 2px solid #d32323;
+  padding-bottom: 8px;
 }
 
-.pizza-of-the-day > div {
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 30px;
-  align-items: center;
+.pizza-of-the-day-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s;
+  margin-bottom: 12px;
+}
+
+.pizza-of-the-day-image:hover {
+  transform: scale(1.02);
 }
 
 .pizza-of-the-day-info h3 {
   color: #667eea;
-  font-size: 1.5rem;
-  margin-bottom: 15px;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
   text-align: left;
   font-style: normal;
   padding: 0;
@@ -386,39 +434,37 @@ h3 {
 
 .pizza-of-the-day-info p {
   color: #555;
-  line-height: 1.6;
-  margin-bottom: 12px;
-  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
 }
 
 .pizza-of-the-day-price {
-  font-size: 1.2rem !important;
+  font-size: 1rem !important;
   font-weight: bold !important;
   color: #d32323 !important;
-  margin-top: 15px !important;
+  margin-top: 4px !important;
+  margin-bottom: 0 !important;
 }
 
-.pizza-of-the-day-image {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transition: transform 0.3s;
-}
-
-.pizza-of-the-day-image:hover {
-  transform: scale(1.05);
+/* Layout principal - Grid de 3 columnas */
+.layout-container {
+  display: grid;
+  grid-template-columns: 280px 1fr 320px; /* PizzaOfTheDay fijo, Order flexible, Cart fijo */
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .pizza-of-the-day > div {
+  /* Apilar layout verticalmente en móviles */
+  .layout-container {
     grid-template-columns: 1fr;
   }
   
   .pizza-of-the-day-image {
-    height: 300px;
+    height: 150px;
   }
   
   nav {
