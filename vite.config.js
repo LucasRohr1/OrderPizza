@@ -15,5 +15,10 @@ export default defineConfig({
       },
     },
   },
-  plugins: [TanStackRouterVite(), react()],
+  plugins: [
+    TanStackRouterVite({
+      autoCodeSplitting: true,
+    }),
+    react(),
+  ],
 });

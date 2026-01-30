@@ -307,6 +307,8 @@ h1 {
   font-size: 0.95rem;
 }
 
+
+
 /* Cart Styles */
 .cart {
   background-color: white;
@@ -744,4 +746,294 @@ h3 {
   .action-icon {
     font-size: 3rem;
   }
+}
+
+/* Past Orders Page */
+.past-orders {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.past-orders h1 {
+  color: #ffffff;
+  margin: 0 0 28px 0;
+  font-size: 2rem;
+  font-family: 'Pacifico', cursive;
+  font-weight: normal;
+  border-bottom: 3px solid #f43b47;
+  padding-bottom: 12px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.past-orders table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+
+.past-orders thead {
+  background: rgba(244, 59, 71, 0.15);
+  border-bottom: 2px solid #f43b47;
+}
+
+.past-orders th {
+  padding: 16px;
+  text-align: left;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.past-orders tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.past-orders tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.past-orders td {
+  padding: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+}
+
+.past-orders td:first-child {
+  font-weight: 600;
+  color: #a8b8ff;
+}
+
+.pages {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.pages button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pages button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.6);
+}
+
+.pages button:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.pages button:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .past-orders {
+    padding: 20px;
+  }
+  
+  .past-orders table {
+    font-size: 0.85rem;
+  }
+  
+  .past-orders th,
+  .past-orders td {
+    padding: 12px 8px;
+  }
+  
+  .pages button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Order ID Button */
+.order-id-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.order-id-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+}
+
+.order-id-btn:active {
+  transform: translateY(0);
+}
+
+/* Loading Styles */
+.loading-container,
+.loading-order-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  min-height: 300px;
+}
+
+.loading-container p,
+.loading-order-details p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  margin-top: 16px;
+  font-weight: 500;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid #f43b47;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Modal Styles */
+#modal {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal:empty {
+  display: none;
+}
+
+#modal > div {
+  padding: 32px;
+  text-align: center;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+#modal h2 {
+  color: #1a1a1a;
+  margin: 0 0 24px 0;
+  font-size: 1.8rem;
+  font-family: 'Pacifico', cursive;
+  font-weight: normal;
+  border-bottom: 3px solid #f43b47;
+  padding-bottom: 12px;
+}
+
+#modal table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#modal thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+#modal thead td {
+  padding: 14px 12px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#modal tbody tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
+}
+
+#modal tbody tr:hover {
+  background-color: rgba(102, 126, 234, 0.05);
+}
+
+#modal tbody td {
+  padding: 12px;
+  color: #1a1a1a;
+  font-size: 0.95rem;
+}
+
+#modal td img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+#modal button {
+  background: linear-gradient(135deg, #f43b47 0%, #d32f2f 100%);
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(244, 59, 71, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 8px;
+}
+
+#modal button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(244, 59, 71, 0.6);
+}
+
+#modal button:active {
+  transform: translateY(0);
 }
