@@ -8,21 +8,11 @@ export const Route = createLazyFileRoute("/order")({
   component: Order,
 });
 
-
-
 const intl = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
 });
 
-/**
- * Order Component
- * 
- * Responsabilidades:
- * - Manejar la selección de pizza
- * - Coordinar el proceso de pedido
- * - Delega el manejo del carrito al contexto (SRP)
- */
 function Order() {
   const [pizzaTypes, setPizzaTypes] = useState([]);
   const [pizzaType, setPizzaType] = useState("");

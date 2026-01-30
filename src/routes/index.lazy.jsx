@@ -29,6 +29,11 @@ function Index() {
           <h3>Past Orders</h3>
           <p>View your order history and reorder favorites</p>
         </Link>
+        <Link to="/contact" className="index-action-card contact-card">
+          <div className="action-icon">📞</div>
+          <h3>Contact Us</h3>
+          <p>Get in touch with us for any questions or feedback</p>
+        </Link>
       </div>
     </div>
   );
