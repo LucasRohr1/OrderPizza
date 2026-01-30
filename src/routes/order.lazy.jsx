@@ -22,22 +22,17 @@ function Order() {
   const [cart, setCart] = useContext(CartContext);
   const { addNotification } = useNotification();
 
-  /**
-   * Agrega un item al carrito y muestra una notificación
-   * Responsabilidad única: actualizar el estado del carrito
-   */
-  const addToCart = (item) => {
-    setCart([...cart, item]);
+  function addToCart() {
+    setCart([...cart, { pizza: selectedPizza, size: pizzaSize, price }]);
     
     // Mostrar notificación de éxito
-    const sizeLabel = item.size === "S" ? "Small" : item.size === "M" ? "Medium" : "Large";
+    const sizeLabel = pizzaSize === "S" ? "Small" : pizzaSize === "M" ? "Medium" : "Large";
     addNotification(
-      `${item.pizza.name} (${sizeLabel}) added to cart!`,
+      `${selectedPizza.name} (${sizeLabel}) added to cart!`,
       "success",
       5000
     );
-  };
-
+  }
 
   let price, selectedPizza;
 
@@ -67,26 +62,10 @@ function Order() {
     fetchPizzaTypes();
   }, []);
 
-  /**
-   * Maneja el submit del formulario
-   * Delega la lógica de agregar al carrito al contexto
-   */
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    if (!selectedPizza) return;
-
-    addToCart({
-      pizza: selectedPizza,
-      size: pizzaSize,
-      price: price,
-    });
-  };
-
   return (
     <div className="order">
       <h2>Create Order</h2>
-      <form onSubmit={handleSubmit}>
+      <form action={addToCart}>
         <div>
           <div>
             <label htmlFor="pizza-type">Pizza Type:</label>
