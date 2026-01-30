@@ -4,22 +4,28 @@ import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import PizzaOfTheDay from "../PizzaOfTheDay";
 import Header from "../Header";
 import { CartContext } from "../contexts";
+import { NotificationProvider } from "../NotificationContext";
+import Toast from "../Toast";
+import "../toast.css";
 
 function RootComponent() {
   const cartHook = useState([]);
   return (
     <>
-      <CartContext.Provider value={cartHook}>
-        <div className="app-container">
-          <Header />
-          <main className="main-content">
-            <Outlet />
-          </main>
-          <aside className="sidebar-content">
-            <PizzaOfTheDay />
-          </aside>
-        </div>
-      </CartContext.Provider>
+      <NotificationProvider>
+        <CartContext.Provider value={cartHook}>
+          <Toast />
+          <div className="app-container">
+            <Header />
+            <main className="main-content">
+              <Outlet />
+            </main>
+            <aside className="sidebar-content">
+              <PizzaOfTheDay />
+            </aside>
+          </div>
+        </CartContext.Provider>
+      </NotificationProvider>
       <TanStackRouterDevtools />
     </>
   );

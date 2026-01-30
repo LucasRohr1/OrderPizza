@@ -3,6 +3,7 @@ import { createLazyFileRoute } from "@tanstack/react-router";
 import Pizza from "../Pizza";
 import Cart from "../Cart";
 import { CartContext } from "../contexts";
+import { useNotification } from "../NotificationContext";
 
 export const Route = createLazyFileRoute("/order")({
   component: Order,
@@ -19,13 +20,22 @@ function Order() {
   const [pizzaSize, setPizzaSize] = useState("M");
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useContext(CartContext);
+  const { addNotification } = useNotification();
 
   /**
-   * Agrega un item al carrito
+   * Agrega un item al carrito y muestra una notificación
    * Responsabilidad única: actualizar el estado del carrito
    */
   const addToCart = (item) => {
     setCart([...cart, item]);
+    
+    // Mostrar notificación de éxito
+    const sizeLabel = item.size === "S" ? "Small" : item.size === "M" ? "Medium" : "Large";
+    addNotification(
+      `${item.pizza.name} (${sizeLabel}) added to cart!`,
+      "success",
+      5000
+    );
   };
 
 
