@@ -1,6 +1,6 @@
 # Padre Gino's Pizza 🍕
 
-Aplicación web completa de pizzería construida con React 19 y TanStack Router. Permite explorar el menú de pizzas, agregar al carrito, realizar pedidos, ver pedidos anteriores y enviar formularios de contacto. El front end esta inspirado en el siguiente curso, y el servidor backend proviene tambien del curso [**Complete Intro to React v9**](https://github.com/btholt/complete-intro-to-react-v9) de **Brian Holt** para Frontend Masters.
+Aplicación web completa de pizzería construida con React 19 y TanStack Router. Permite explorar el menú de pizzas, agregar al carrito, realizar pedidos, ver pedidos anteriores y enviar formularios de contacto. El front end está inspirado en el siguiente curso, y el servidor backend también proviene del curso [**Complete Intro to React v9**](https://github.com/btholt/complete-intro-to-react-v9) de **Brian Holt** para Frontend Masters.
 
 ## ¿Qué es esta aplicación?
 
@@ -52,8 +52,6 @@ Una aplicación full-stack de pizzería con:
 - **Vitest**: Framework de testing
 - **Testing Library**: Testing de componentes
 - **happy-dom**: DOM virtual para tests
-- Mocking de APIs con `vitest-fetch-mock`
-- Snapshot testing
 
 #### Herramientas de Desarrollo
 - **Vite**: Build tool y dev server
