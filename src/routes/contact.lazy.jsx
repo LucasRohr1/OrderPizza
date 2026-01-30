@@ -8,7 +8,7 @@ export const Route = createLazyFileRoute("/contact")({
 
 function ContactRoute() {
   const mutation = useMutation({
-    mutationFn: function (formData) { // gets the form data from the event target (e.target is the form element)
+    mutationFn: function (formData) {
       return postContact(
         formData.get("name"),
         formData.get("email"),
@@ -17,17 +17,23 @@ function ContactRoute() {
     },
   });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    mutation.mutate(formData);
+  };
+
   return (
     <div className="contact">
       <h2>Contact</h2>
       {mutation.isSuccess ? ( 
         <h3>Submitted!</h3>
       ) : (
-        <form action={mutation.mutate}> 
+        <form onSubmit={handleSubmit}> 
           <input name="name" placeholder="Name" />
           <input type="email" name="email" placeholder="Email" />
           <textarea placeholder="Message" name="message"></textarea>
-          <button>Submit</button>
+          <button type="submit">Submit</button>
         </form>
       )}
     </div>
